@@ -17,6 +17,10 @@ The purpose of the application is to allow a user to open a `.graphml` file host
 
 * We will use the GitHub API:  https://developer.github.com/v3/
 
+## Workflow
+
+<img src="../images/2/gapps-yEd-github-workflow.png" alt="workflow" width="100%"/>
+
 ## Consequences
 
 What becomes easier or more difficult to do and any risks introduced by the change that will need to be mitigated.
