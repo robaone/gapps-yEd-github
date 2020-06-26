@@ -15,7 +15,7 @@ The purpose of the application is to allow a user to open a `.graphml` file host
 
 ## Decision
 
-The change that we're proposing or have agreed to implement.
+* We will use the GitHub API:  https://developer.github.com/v3/
 
 ## Consequences
 
