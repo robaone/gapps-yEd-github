@@ -21,10 +21,12 @@ The purpose of the application is to allow a user to open a `.graphml` file host
 
 ### Workflow
 
-<img src="../images/2/gapps-yEd-github-workflow.png" alt="workflow" width="100%"/>
+<img style="display: block; margin-left: auto; margin-right: auto" src="../images/2/gapps-yEd-github-workflow.png" alt="workflow" width="50%"/>
 
 * The user will ultimately be redirected to the following url
-  * https://www.yworks.com/yed-live/?file=${url}?token=${github_token}
+  * `https://www.yworks.com/yed-live/?file=${url}?token=${github_token}`
+    * **Where** `${url}` is the public web address of the file
+    * **And** `{github_token}` is the access token created for the active user and retrieved from the Github API
 
 ## Consequences
 
