@@ -16,11 +16,18 @@ The purpose of the application is to allow a user to open a `.graphml` file host
 ## Decision
 
 * We will use the GitHub API:  https://developer.github.com/v3/
+* We will write the application for the Google Scripts platform: https://script.google.com
+* The application will follow workflow outlined below
 
-## Workflow
+### Workflow
 
 <img src="../images/2/gapps-yEd-github-workflow.png" alt="workflow" width="100%"/>
 
+* The user will ultimately be redirected to the following url
+  * https://www.yworks.com/yed-live/?file=${url}?token=${github_token}
+
 ## Consequences
 
-What becomes easier or more difficult to do and any risks introduced by the change that will need to be mitigated.
+* The application hosting will be free
+* The application will have to be registered in Github
+* Once installed, the application will be usable to anyone
