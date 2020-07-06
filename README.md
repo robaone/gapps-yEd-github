@@ -28,9 +28,9 @@ The code can be installed using the [gas-github Google Chrome plugin](https://gi
 1. Read the OAuth documentation at https://developer.github.com/apps/building-oauth-apps/authorizing-oauth-apps/
 1. Press **Register Application**
 1. Save the client id and client secret in the Google script properties by going to **File > Project Properties > Script Properties**
-  * Save the client secret under `client_secret`
-  * Save the client id under `client_id`
-  * Press **Save**
+   * Save the client secret under `client_secret`
+   * Save the client id under `client_id`
+   * Press **Save**
 1. Create a logo (I used Inkscape)
 1. Update the application
 
