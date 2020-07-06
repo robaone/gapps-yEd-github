@@ -1,3 +1,3 @@
-function myFunction() {
+function doGet(request) {
   console.log();
 }
