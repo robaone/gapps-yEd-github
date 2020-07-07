@@ -46,13 +46,10 @@ function authorize(request) {
       +secrets.client_secret
       +"&code="
       +code;
-  console.log("input state = "+state);
-  console.log("saved state = "+getState());
   if ( state == getState() ) {
     var options = {"method":"POST","headers":headers,"payload":payload};
     var url = "https://github.com/login/oauth/access_token?"+payload;
     var response = UrlFetchApp.fetch(url,options);
-    console.log("github response = "+response.getContentText());
     return JSON.parse(response.getContentText()).access_token;
   }else{
     throw "Invalid State";
