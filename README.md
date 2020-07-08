@@ -2,6 +2,8 @@
 
 ## Overview
 
+This app acts as a redirect to the yEd-live editor and provides a download url to the yEd-live editor so that it can open a .graphml file hosted in a private Github repository.
+
 This application is designed to be hosted in https://script.google.com as a Google Scripts App.
 
 The code can be installed using the [gas-github Google Chrome plugin](https://github.com/leonhartX/gas-github)
@@ -34,3 +36,12 @@ The code can be installed using the [gas-github Google Chrome plugin](https://gi
 1. Create a logo (I used Inkscape)
 1. Update the application
 
+## Usage
+
+Create a url in the following format.
+
+`${app_script_host_url}?repo=${repository_name}&$owner=${repository_owner}&file_path=${path_to_graphml_file}`
+
+Here is an example url
+
+https://script.google.com/macros/s/AKfycbwdn8DvT7tmv6k-tzlR_8hxPsx_3ArdByRWufhsZ7zr_pIZF3n7/exec?repo=casechek-docs&owner=robaone&file_path=doc/assets/bill-only-services.graphml
