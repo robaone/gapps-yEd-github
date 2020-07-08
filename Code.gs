@@ -1,15 +1,20 @@
+const GITHUB_API="https://api.github.com";
+const YED_URL="https://www.yworks.com/yed-live/?file=";
+
 function doGet(request) {
   console.log(request);
   if (request.parameters.code == undefined ){
     var template = HtmlService.createTemplateFromFile('Index');
     template.data = {url: githubLogin(request)};
+    saveFileData(request);
     return template.evaluate();
   }else{
     var template = HtmlService.createTemplateFromFile('Result');
     var access_token = authorize(request);
     template.data = {
       code: request.parameters.code,
-      access_token: access_token
+      access_token: access_token,
+      download_url: YED_URL+getDownloadUrl(access_token,apiPath())
     };
     return template.evaluate();
   }
@@ -18,6 +23,31 @@ function doGet(request) {
 function doPost(request) {
   console.log(request);
 }
+
+function getDownloadUrl(access_token,api_path) {
+  var headers = {
+    "Accept":"application/vnd.github.v3+json",
+    "Authorization":"token "+access_token
+  };
+  var options = {"method":"GET","headers":headers};
+  var url = GITHUB_API+api_path;
+  var response = UrlFetchApp.fetch(url,options);
+  var response_jo = JSON.parse(response.getContentText());
+  return response_jo.download_url;
+}
+
+
+function apiPath() {
+  var file_data = JSON.parse(PropertiesService.getUserProperties().getProperty("file_data"));
+  var path = "/repos/"
+    +file_data.owner
+    +"/"
+    +file_data.repo
+    +"/contents"
+    +file_data.path;
+  return path;
+}
+
 
 function githubLogin(request) {
   var secrets = getSecrets();
@@ -54,6 +84,16 @@ function authorize(request) {
   }else{
     throw "Invalid State";
   }
+}
+
+function saveFileData(request) {
+  var file_data = {
+    path: request.parameter.file_path,
+    repo: request.parameter.repo,
+    owner: request.parameter.owner
+  };
+  console.log("saving: " + JSON.stringify(file_data));
+  PropertiesService.getUserProperties().setProperty("file_data", JSON.stringify(file_data));
 }
 
 function createRedirectUri(request){
@@ -98,6 +138,13 @@ function test_doGet_Step2() {
     contentLength: -1,
     contextPath: '' };
   var html = doGet(request);
+}
+
+function test_saveFileData(){
+  var request = { parameters: {file_path: "/doc/assets/file.graphml", owner: "owner", repo: "repo"}};
+  saveFileData(request);
+  var api_path = apiPath();
+  console.log(api_path);
 }
 
 function test_getSecrets() {
