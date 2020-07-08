@@ -45,3 +45,5 @@ Create a url in the following format.
 Here is an example url
 
 https://script.google.com/macros/s/AKfycbwdn8DvT7tmv6k-tzlR_8hxPsx_3ArdByRWufhsZ7zr_pIZF3n7/exec?repo=casechek-docs&owner=robaone&file_path=doc/assets/bill-only-services.graphml
+
+Click on the link and you will be redirect to yEd-live where it will ask you if you want to load the file.  When loaded, you will see the .graphml file rendered in the yEd-live editor.
