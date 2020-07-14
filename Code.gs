@@ -44,7 +44,8 @@ function apiPath() {
     +"/"
     +file_data.repo
     +"/contents"
-    +file_data.path;
+    +file_data.path
+    +(file_data.branch ? "?ref="+file_data.branch : "");
   return path;
 }
 
@@ -90,7 +91,8 @@ function saveFileData(request) {
   var file_data = {
     path: request.parameter.file_path,
     repo: request.parameter.repo,
-    owner: request.parameter.owner
+    owner: request.parameter.owner,
+    branch: request.parameter.branch
   };
   console.log("saving: " + JSON.stringify(file_data));
   PropertiesService.getUserProperties().setProperty("file_data", JSON.stringify(file_data));
@@ -141,7 +143,7 @@ function test_doGet_Step2() {
 }
 
 function test_saveFileData(){
-  var request = { parameters: {file_path: "/doc/assets/file.graphml", owner: "owner", repo: "repo"}};
+  var request = { parameter: {file_path: "/doc/assets/file.graphml", owner: "owner", repo: "repo", branch: "master"}};
   saveFileData(request);
   var api_path = apiPath();
   console.log(api_path);
